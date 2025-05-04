@@ -1,8 +1,6 @@
 streamlit
+schedule
+requests
 pandas
-numpy
-yfinance
 ta
-joblib
-scikit-learn
 python-telegram-bot
