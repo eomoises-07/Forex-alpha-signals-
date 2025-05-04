@@ -1,72 +1,72 @@
-Forex Alpha Signals 2.0
+# Forex Alpha Signals
 
-Sistema de análise automática de sinais para o mercado financeiro com IA, indicadores técnicos e envio de alertas via Telegram. Desenvolvido em Python com Streamlit.
+Forex Alpha Signals é um sistema de análise técnica automatizada para o mercado Forex. Ele analisa múltiplos pares de moedas e múltiplos timeframes, identifica oportunidades de entrada com base em indicadores e envia alertas em tempo real por Telegram e pela interface web.
 
-Funcionalidades
+## Funcionalidades
 
-Análise de pares de moedas (Forex), ações, criptomoedas e commodities.
+- Análise técnica automática com execução periódica em segundo plano
+- Suporte a múltiplos pares de moedas e múltiplos timeframes (selecionáveis no frontend)
+- Interface web desenvolvida com Streamlit
+- Envio de alertas de sinais via Telegram
+- Exibição dos sinais diretamente no app
+- Histórico completo de sinais gerados
+- Painel de controle com botão de atualização manual
+- Sistema de login com proteção por senha
 
-Indicadores: EMA, MACD, RSI e Bandas de Bollinger.
+## Tecnologias utilizadas
 
-Classificação com árvore de decisão (IA).
+- Python 3.10+
+- Streamlit (frontend)
+- Pandas, TA-Lib, yfinance (análise técnica)
+- APScheduler (execução periódica)
+- Telegram Bot API (alertas)
+- Railway (hospedagem backend e worker)
 
-Geração automática de sinais de Compra/Venda.
+## Estrutura do Projeto
 
-Envio de alertas para o Telegram.
+- `app.py`: Interface principal do usuário (frontend Streamlit)
+- `worker.py`: Analisador automático em segundo plano
+- `analyzer.py`: Módulo central de análise técnica
+- `telegram_alert.py`: Integração com Telegram
+- `utils/`: Utilitários e suporte para a aplicação
 
-Histórico de sinais com exportação CSV.
-
-Interface web com Streamlit.
-
-Execução contínua em segundo plano com worker agendado (Render).
-
-
-Estrutura
-
-app.py: interface principal com Streamlit.
-
-worker.py: agendador automático que realiza análises a cada 10 minutos.
-
-config.py: armazena o token e chat_id do Telegram e a senha do app.
-
-requirements.txt: dependências do projeto.
-
-
-Como executar localmente
+## Como rodar localmente
 
 1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/Forex-alpha-signals.git
+   cd Forex-alpha-signals
 
-
-
-git clone https://github.com/eomoises-07/Forex-alpha-signals-.git
-cd Forex-alpha-signals-
-
-2. Instale os pacotes:
-
-
+2. Instale as dependências:
 
 pip install -r requirements.txt
 
-3. Crie o arquivo config.py com:
+
+3. Configure variáveis de ambiente (como o token do bot Telegram) via .env.
 
 
-
-TELEGRAM_TOKEN = 7721305430:AAG1f_3Ne79H3vPkrgPIaJ6VtrM4o0z62ws
-TELEGRAM_CHAT_ID = 201011370
-SENHA_APP = Deuséfiel
-
-4. Inicie a interface web:
-
-
+4. Execute a interface:
 
 streamlit run app.py
 
-(O worker será executado no Render como serviço separado)
 
-Deploy (Render)
+5. (Opcional) Execute o worker em segundo plano:
 
-Crie um Web Service apontando para app.py
+python worker.py
 
-Crie um Background Worker apontando para worker.py
 
-Certifique-se de que o config.py está no repositório (evite expor dados sensíveis em projetos públicos)
+
+Deploy
+
+Este projeto é hospedado gratuitamente no Railway, utilizando dois serviços:
+
+Serviço 1: Interface web (Streamlit)
+
+Serviço 2: Worker backend (Python puro)
+
+
+Ambos compartilham o mesmo repositório e requerem variáveis de ambiente apropriadas para funcionar corretamente.
+
+Licença
+
+Este projeto está licenciado sob a MIT License.
