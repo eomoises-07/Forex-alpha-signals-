@@ -1,0 +1,8 @@
+streamlit
+pandas
+numpy
+yfinance
+ta
+joblib
+scikit-learn
+python-telegram-bot
